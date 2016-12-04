@@ -2,7 +2,10 @@
 
 <head>
   <title>Interest Calculator</title>
-  <script src="validate.js"> </script>
+  <script src="scripts.js"> </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
 </head>
 
 <body>
@@ -10,27 +13,33 @@
 <p>Please fill in all the required fields.</p>
 <hr />
 
-<form action="script.js">
+<form>
   <p>Starting Balance:
-    <input type="text" onkeypress="validate(event)"</>
+    <input type="text" onkeypress="validate(event)" id="principal"</>
   </p
-  <p>Amount to add:</p>
-    <input type="text" onkeypress="validate(event)"</>
-    <div class="dropdown">
-      <button onclick="dropdown()" class="dropbtn">Dropdown</button>
-      <div id="myDropdown" class="dropdown-content">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
+  <p>Amount to add:
+    <input type="text" onkeypress="validate(event)" id="added"</>
+    Per:
+  <div class="dropdown">
+    <button onclick="dropdown()" class="dropbtn">Month</button>
+    <div id="myDropdown" class="dropdown-content">
+      <a href="#" onclick="changeDropDown('Week')">Week</a>
+      <a href="#" onclick="changeDropDown('Month')">Month</a>
+      <a href="#" onclick="changeDropDown('Year')">Year</a>
+    </div>
   </div>
-</div>
+  </p>
+  <p>Time to calculate:
+    <input type="text" onkeypress="validate(event)" id="timeToCalc"</>
+    Years
   </p
-  <p>Starting Balance:
-    <input type="text" onkeypress="validate(event)"</>
+  <p>Estimated ROI:
+    <input type="text" onkeypress="validate(event)" id="roi"</>
+    Percent
   </p
-  <p>Starting Balance:
-    <input type="text" onkeypress="validate(event)"</>
-  </p
+
+  <div class="calculate">
+    <button onclick="calculate()">Calculate!</button>
 </body>
 
 <html>
