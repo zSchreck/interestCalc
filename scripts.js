@@ -11,6 +11,10 @@ function validate(evnt){
 
 function dropdown(){
   document.getElementById("myDropdown").classList.toggle("show");
+  // Preventing loading of page when button is clicked
+  $(".dropbtn").click(function( event ) {
+    event.preventDefault();
+  });
 }
 
 function changeDropDown(time){
@@ -34,16 +38,33 @@ window.onclick = function(event){
 }
 
 function calculate(){
+  // Preventing loading of page when button is clicked
+  $("#calculateButton").click(function( event ) {
+    event.preventDefault();
+  });
+
   var $principal = $('#principal')['0'].value;
   var $added = $('#added')['0'].value;
-  var $years = $('#timeToCalc')['0'].value;
+  var $years = $('#years')['0'].value;
   var $roi = $('#roi')['0'].value;
   var $interval = $('.dropbtn')['0'].textContent;
-  console.log($interval);
-  //Turning roi into a percentage
-  roi = roi/100;
 
-}
-  function calculate(principal, added, years, roi, interval){
-
+  //Converting to ammount added in a year
+  if($interval === 'Week'){
+    $added = $added * 52;
   }
+
+  if ($interval === 'Month') {
+    $added = $added * 12;
+  }
+
+  var balance = $principal/1;
+  $roi /= 100;
+  $roi += 1;
+  for (var i = 0; i < $years; i++){
+    balance += $added;
+    console.log(balance);
+    balance *= $roi;
+  }
+console.log(balance);
+}
